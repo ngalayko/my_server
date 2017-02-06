@@ -1,0 +1,7 @@
+---
+- hosts: default
+  become: yes
+  remote_user: ubuntu
+  roles:
+	- site
+  serial: 1
