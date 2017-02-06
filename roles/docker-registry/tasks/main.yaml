@@ -1,0 +1,9 @@
+# docker run -d -p 5000:5000 --name registry registry:2
+- name: docker-registry container
+  docker_container:
+    name: docker-registry
+    image: registry:2
+    state: started
+    network_mode: host
+    volumes:
+      - /data/lib/docker-registry:/var/lib/registry

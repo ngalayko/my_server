@@ -1,0 +1,9 @@
+---
+
+- hosts: default
+  become: yes
+  remote_user: ubuntu
+  roles:
+    - docker
+    - docker-registry
+  serial: 1
