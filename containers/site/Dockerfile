@@ -9,6 +9,9 @@ RUN npm install -g bower grunt-cli
 RUN git clone https://github.com/ngalayko/Syte2 site
 WORKDIR /site
 
+ADD env.js ./client/app/scripts/
+ADD .env ./server/
+
 # setting up client
 WORKDIR ./client
 RUN bower install --allow-root

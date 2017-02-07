@@ -1,2 +1,6 @@
 # ansible retry
 *.retry
+
+# config files
+.env
+env.js
