@@ -14,7 +14,7 @@ all: containers deploy
 deploy: 
 	ansible-playbook -i inventory/default deploy.yaml 
 
-containers: container-site
+containers: container-site container-stats
 
 #== Containers ==#
 

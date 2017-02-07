@@ -1,17 +1,16 @@
-FROM ubuntu:16.04
+FROM debian:jessie
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-    git
+    ca-certificates git
 
-RUN git clone https://github.com/titpetric/netdata
+RUN git clone https://github.com/titpetric/netdata stats
 
-WORKDIR netdata
+WORKDIR stats
 
-ADD git-tag /git-tag
-
-RUN cp releases/v1.5.0/scripts/build.sh /build.sh
-RUN cp releases/v1.5.0/scripts/run.sh /run.sh
+RUN cp ./releases/v1.5.0/git-tag /git-tag
+RUN cp ./releases/v1.5.0/scripts/build.sh /build.sh
+RUN cp ./releases/v1.5.0/scripts/run.sh /run.sh
 
 RUN chmod +x /run.sh /build.sh && sync && sleep 1 && /build.sh
 

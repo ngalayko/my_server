@@ -1,0 +1,7 @@
+- name: stats container
+  docker_container:
+    name: theq-web
+    image: "{{ lookup('env','GALAYKO_DOCKER_STATS') }}"
+    pull: yes
+    state: started
+    network_mode: host
