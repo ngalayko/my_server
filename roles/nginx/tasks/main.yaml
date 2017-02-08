@@ -1,0 +1,34 @@
+---
+
+- name: nginx repo
+  apt_repository: repo='ppa:nginx/stable' update_cache=yes
+
+- name: nginx installed
+  apt: name=nginx state=latest
+
+- name: nginx config
+  file: path=/etc/nginx/nginx.conf src=nginx.conf mode=0400 owner=root
+  notify: restart nginx
+
+- name: ssl config dir
+  file: path=/etc/nginx/ssl state=directory mode=0400
+
+- name: let's encrypt folder
+  file: path=/var/www/html/.well-known/acme-challenge state=directory  
+
+- name: let's encrypt test file
+  copy: src=acme dest=/var/www/html/.well-known/acme-challenge/example.html
+
+- name: ssl files
+  copy: src=ssl/ dest=/etc/nginx/ssl/ owner=root group=root mode=0400
+
+- name: nginx sites
+  copy: dest=/etc/nginx/sites-enabled/ src={{ item }} mode=0400 owner=root
+  with_items:
+    - sites/default
+    - sites/docker.galayko.xyz
+    - sites/galayko.xyz
+  notify: reload nginx
+
+- name: start nginx
+  service: name=nginx state=started

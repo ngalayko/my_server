@@ -1,0 +1,10 @@
+---
+
+- name: mongo container
+  docker_container:
+    name: mongo container
+    image: mongo:3.4.0
+    state: started
+    network_mode: host
+    volumes:
+      - /data/lib/mongo:/data/db

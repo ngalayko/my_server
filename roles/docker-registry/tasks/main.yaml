@@ -2,7 +2,7 @@
 - name: docker-registry container
   docker_container:
     name: docker-registry
-    image: registry:2
+    image: registry:2.5
     state: started
     network_mode: host
     volumes:

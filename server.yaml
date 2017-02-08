@@ -6,4 +6,5 @@
   roles:
     - docker
     - docker-registry
+    - nginx
   serial: 1

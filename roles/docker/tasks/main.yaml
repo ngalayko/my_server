@@ -11,6 +11,6 @@
     - docker-engine
     - python-pip
 
-- pip: name=docker-py
+- pip: name="docker-py==1.9.0"
 
 - service: name=docker enabled=yes state=started

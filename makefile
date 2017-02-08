@@ -6,10 +6,10 @@ export URL = docker.galayko.xyz
 export GALAYKO_DOCKER_SITE = ${URL}/ngalayko/site
 export GALAYKO_DOCKER_STATS = ${URL}/ngalayko/stats
 
-docker: 
-	ansible-playbook -i inventory/default docker.yaml 
-
 all: containers deploy
+
+server: 
+	ansible-playbook -i inventory/default server.yaml 
 
 deploy: 
 	ansible-playbook -i inventory/default deploy.yaml 

@@ -1,0 +1,38 @@
+# Default nginx server.
+
+server {
+    listen 80 default_server backlog=1024;
+    listen [::]:80 default_server backlog=1024 ipv6only=on;
+
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+
+    location /nginx_stub_status {
+        stub_status on;
+        allow 127.0.0.1;
+        deny all;
+    }
+}
+
+server {
+    listen 443 default_server ssl backlog=1024;
+    listen [::]:443 default_server ssl backlog=1024 ipv6only=on;
+    # include /etc/nginx/ssl/thequestion.ru.conf;
+
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+
+    location / {
+        deny all;
+    }
+
+    location /nginx_stub_status {
+        stub_status on;
+        allow 127.0.0.1;
+        deny all;
+    }
+}
