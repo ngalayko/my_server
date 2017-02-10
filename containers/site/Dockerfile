@@ -20,7 +20,7 @@ RUN grunt clean --force
 RUN grunt build --force
 
 # setting up server
-WORKDIR ./
+WORKDIR ../
 RUN npm install
 
 EXPOSE 3000

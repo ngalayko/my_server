@@ -5,5 +5,6 @@
     image: registry:2.5
     state: started
     network_mode: host
+    restart_policy: always
     volumes:
       - /data/lib/docker-registry:/var/lib/registry
