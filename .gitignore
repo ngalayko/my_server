@@ -4,3 +4,6 @@
 # config files
 .env
 env.js
+
+# containers
+./containers/*

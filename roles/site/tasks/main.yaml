@@ -1,7 +1,8 @@
 - name: site container
   docker_container:
-    name: theq-web
+    name: site
     image: "{{ lookup('env','GALAYKO_DOCKER_SITE') }}"
     pull: yes
+    restart_policy: always
     state: started
     network_mode: host
