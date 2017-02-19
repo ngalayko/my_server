@@ -1,4 +1,4 @@
-## Setting up full server with docker containers using ansible
+## Setting up server with docker containers using ansible
 
 # Requirements
 * You should have SSL certificates on the remote server, use [Let's Encrypt](https://letsencrypt.org/) for easy install
@@ -8,6 +8,10 @@
 * [Ansible](https://www.ansible.com/)
 
 # Usage
-`make server` to set up server envyroment (note: this will not install nginx and authorized keys TODO)  
+`make server` to set up server envyroment 
 
 `make` for deploy
+
+# TODO
+* nginx container
+* let's encrypt container
