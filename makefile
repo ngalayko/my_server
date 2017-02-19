@@ -1,6 +1,6 @@
-###############
-# galayko.xyz #
-###############
+#################
+# galayko.rocks #
+#################
 
 export URL = docker.galayko.rocks
 export GALAYKO_DOCKER_SITE = ${URL}/site
