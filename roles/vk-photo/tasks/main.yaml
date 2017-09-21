@@ -1,8 +1,0 @@
-- name: vk_saved_photo_origin container
-  docker_container:
-    name: vk_saved_photo_origin
-    image: "{{ lookup('env','GALAYKO_DOCKER_LAST.FM_TO_VK') }}"
-    pull: yes
-    restart_policy: always
-    state: started
-    network_mode: host

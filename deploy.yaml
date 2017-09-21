@@ -1,9 +1,0 @@
----
-- hosts: default
-  become: yes
-  remote_user: ubuntu
-  roles:
-      - site
-      - last-fm
-      - vk-photo
-  serial: 1

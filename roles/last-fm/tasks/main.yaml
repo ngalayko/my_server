@@ -1,8 +1,0 @@
-- name: last.fm_to_vk container
-  docker_container:
-    name: last.fm_to_vk 
-    image: "{{ lookup('env','GALAYKO_DOCKER_LAST.FM_TO_VK') }}"
-    pull: yes
-    restart_policy: always
-    state: started
-    network_mode: host

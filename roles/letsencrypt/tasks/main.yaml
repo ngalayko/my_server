@@ -1,0 +1,33 @@
+---
+
+- apt: name={{ item }} state=latest
+  with_items:
+        - nginx
+
+- apt_repository: repo=ppa:certbot/certbot
+
+- apt: name={{ item }} state=latest
+  with_items:
+        - python-certbot-nginx 
+
+- name: Copy config
+  synchronize: src={{ role_path }}/files/{{ item }} dest=/etc/nginx/
+  with_items:
+        - "sites-enabled"
+
+- name: run certbot
+  shell: sudo certbot -n --agree-tos --nginx -m ngalayko@gmail.com -d {{ item }}
+  ignore_errors: yes 
+  with_items:
+          - "docker.galayko.rocks"
+          - "galayko.rocks"
+
+- name: run openssl
+  shell: sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+
+- name: Creates daily carts update 
+  cron: minute="20" hour="5" weekday="*"
+        name="Update Let's Encrypt certs"
+        user="root"
+        job="/usr/bin/certbot renew --quiet"
+

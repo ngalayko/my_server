@@ -1,9 +1,7 @@
-# docker.galayko.rocks:80
-server {
-        listen 80;
-        server_name docker.galayko.rocks;
 
-	include snippets/acme;
+upstream registry {
+  server 127.0.0.1:5000;
+  keepalive 16;
 }
 
 # docker.galayko.rocks:433
@@ -11,7 +9,7 @@ server {
 	listen 443 ssl; 
 	server_name docker.galayko.rocks;
 
-	include snippets/ssl-galayko.rocks.conf;
+	include snippets/ssl-docker.galayko.rocks.conf;
 	include snippets/ssl-params.conf;
 
 	ssi on;
@@ -20,7 +18,7 @@ server {
 
 	location / {
 		default_type text/html;
-        	proxy_pass http://127.0.0.1:5000;
+        	proxy_pass http://registry;
         	proxy_redirect off;
 
 		include snippets/proxy_params;
