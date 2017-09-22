@@ -1,0 +1,15 @@
+---
+
+- name: drone agent 
+  docker_container:
+    name: drone-agent
+    image: drone/drone:0.7
+    state: started
+    command: agent
+    network_mode: host
+    restart_policy: False 
+    volumes:
+     - "/var/run/docker.sock:/var/run/docker.sock"
+    env:
+     DRONE_SERVER: "ws://{{ lookup('env', 'DRONE_HOST') }}/ws/broker"
+     DRONE_SECRET: "{{ lookup('env', 'DRONE_SECRET') }}"

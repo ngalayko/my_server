@@ -1,9 +1,5 @@
 # ansible retry
 *.retry
 
-# config files
-.env
-env.js
-
-# containers
-./containers/*
+# test ansible file
+test.yaml

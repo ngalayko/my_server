@@ -8,4 +8,5 @@
     - docker-registry
     - letsencrypt
     - nginx
+    - drone-server
   serial: 1

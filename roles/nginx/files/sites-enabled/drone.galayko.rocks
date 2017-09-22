@@ -1,0 +1,27 @@
+
+upstream drone {
+	server 127.0.0.1:8000;
+	keepalive 16;
+}
+
+# drone.galayko.rocks:433
+server {
+	listen 443 ssl; 
+	server_name drone.galayko.rocks;
+
+
+	include snippets/ssl-drone.galayko.rocks.conf;
+	include snippets/ssl-params.conf;
+
+	ssi on;
+
+	include snippets/acme;
+
+	location / {
+		default_type text/html;
+        	proxy_pass http://drone;
+        	proxy_redirect off;
+
+		include snippets/proxy_params;
+	}
+}

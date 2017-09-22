@@ -10,7 +10,7 @@
   with_items:
         - python-certbot-nginx 
 
-- name: Copy config
+- name: copy config
   synchronize: src={{ role_path }}/files/{{ item }} dest=/etc/nginx/
   with_items:
         - "sites-enabled"
@@ -21,13 +21,17 @@
   with_items:
           - "docker.galayko.rocks"
           - "galayko.rocks"
+          - "drone.galayko.rocks"
 
 - name: run openssl
   shell: sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
-- name: Creates daily carts update 
+- name: Creates daily certs update 
   cron: minute="20" hour="5" weekday="*"
         name="Update Let's Encrypt certs"
         user="root"
         job="/usr/bin/certbot renew --quiet"
 
+- name: delete default
+  shell: rm /etc/nginx/sites-enabled/default
+  notify: reload nginx
