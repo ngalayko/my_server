@@ -3,6 +3,6 @@ server {
     server_name galayko.rocks docker.galayko.rocks;
 
     location / {
-        return 200;
+        return 301 https://$host$request_uri;
     }
 }

@@ -6,6 +6,7 @@
 
 - name: Copy config 
   synchronize: src={{ role_path }}/files/{{ item }} dest=/etc/nginx/
+  notify: reload nginx
   with_items:
         - "sites-enabled"
         - "snippets"

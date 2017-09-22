@@ -6,5 +6,5 @@
 * [Ansible](https://www.ansible.com/)
 
 # Usage
-`make server` to set up server envyroment 
+`make server` to set up server enviroment 
 
