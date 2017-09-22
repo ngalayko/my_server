@@ -1,13 +1,15 @@
 
 upstream registry {
-  server 127.0.0.1:5000;
-  keepalive 16;
+	server 127.0.0.1:5000;
+	keepalive 16;
 }
 
 # docker.galayko.rocks:433
 server {
 	listen 443 ssl; 
 	server_name docker.galayko.rocks;
+
+	client_max_body_size 50M;
 
 	include snippets/ssl-docker.galayko.rocks.conf;
 	include snippets/ssl-params.conf;
