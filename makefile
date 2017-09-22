@@ -7,6 +7,8 @@ export DRONE_SECRET = $$(env LC_CTYPE=C LC_ALL=C tr -dc "a-zA-Z0-9-_\$\?" < /dev
 export DRONE_GITHUB_CLIENT = client_id
 export DRONE_GITHUB_SECRET = client_secret 
 
+all: server drone
+
 server:  
 	ansible-playbook -i inventory/default server.yaml 
 
