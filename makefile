@@ -10,3 +10,6 @@ export DRONE_GITHUB_SECRET = client_secret
 server:  
 	ansible-playbook -i inventory/default server.yaml 
 
+drone:
+	ansible-playbook -i inventory/default drone.yaml
+

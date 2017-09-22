@@ -1,0 +1,9 @@
+---
+
+- hosts: default
+  become: yes
+  remote_user: ubuntu
+  roles:
+    - drone-server
+    - drone-agent
+  serial: 1
