@@ -1,10 +1,9 @@
-## Setting up server with docker containers using ansible
+# Setting up server with docker containers using ansible
 
-# Requirements
+## Requirements
 * You should be able to access remote server via ssh
-* [Docker](https://www.docker.com/)
 * [Ansible](https://www.ansible.com/)
 
-# Usage
-`make server` to set up server enviroment 
+## Usage
+`make` to run  
 

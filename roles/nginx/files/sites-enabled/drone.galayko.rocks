@@ -4,11 +4,14 @@ upstream drone {
 	keepalive 16;
 }
 
-# drone.galayko.rocks:433
+map $http_upgrade $connection_upgrade {
+	default upgdare;
+	''      close;
+}
+
 server {
 	listen 443 ssl; 
 	server_name drone.galayko.rocks;
-
 
 	include snippets/ssl-drone.galayko.rocks.conf;
 	include snippets/ssl-params.conf;
@@ -18,10 +21,15 @@ server {
 	include snippets/acme;
 
 	location / {
-		default_type text/html;
         	proxy_pass http://drone;
-        	proxy_redirect off;
 
 		include snippets/proxy_params;
 	}
+
+	location ~* /ws {
+		proxy_pass http://drone;
+
+		include snippets/proxy_ws_params;
+	}
 }
+

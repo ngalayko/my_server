@@ -16,7 +16,8 @@
         - "sites-enabled"
 
 - name: run certbot
-  shell: sudo certbot -n --agree-tos --nginx -m ngalayko@gmail.com -d {{ item }}
+  shell: certbot -n --agree-tos --nginx -m ngalayko@gmail.com -d {{ item }}
+  become: yes
   ignore_errors: yes 
   with_items:
           - "docker.galayko.rocks"
@@ -24,7 +25,8 @@
           - "drone.galayko.rocks"
 
 - name: run openssl
-  shell: sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+  shell: openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+  become: yes
 
 - name: Creates daily certs update 
   cron: minute="20" hour="5" weekday="*"
