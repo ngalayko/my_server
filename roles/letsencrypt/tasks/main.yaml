@@ -23,6 +23,7 @@
           - "docker.galayko.rocks"
           - "galayko.rocks"
           - "drone.galayko.rocks"
+          - "shortner.galayko.rocks"
 
 - name: run openssl
   shell: openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048

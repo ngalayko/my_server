@@ -1,0 +1,25 @@
+
+upstream shortner {
+	server 127.0.0.1:8080;
+	keepalive 16;
+}
+
+# shortner.galayko.rocks:433
+server {
+	listen 443 ssl; 
+	server_name shortner.galayko.rocks;
+
+	include snippets/ssl-shortner.galayko.rocks.conf;
+	include snippets/ssl-params.conf;
+
+	ssi on;
+
+	include snippets/acme;
+	include snippets/gzip;
+
+	location / {
+        	proxy_pass http://shortner;
+
+		include snippets/proxy_params;
+	}
+}

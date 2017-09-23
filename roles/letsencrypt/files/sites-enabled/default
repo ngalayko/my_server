@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name galayko.rocks docker.galayko.rocks drone.galayko.rocks;
+    server_name galayko.rocks docker.galayko.rocks drone.galayko.rocks shortner.galayko.rocks;
 
     location / {
         return 301 https://$host$request_uri;

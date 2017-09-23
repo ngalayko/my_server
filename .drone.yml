@@ -1,0 +1,6 @@
+pipeline:
+        deploy:
+                image: ansible/ansible:latest
+                commands:
+                        - ansible-playbook -i inventory/default server.yaml 
+     
