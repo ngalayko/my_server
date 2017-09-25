@@ -13,7 +13,7 @@
     volumes:
       - /data/lib/mongo:/data/db
     networks:
-      - syte2_net
+      - name: syte2_net
 
 - name: syte2 container
   docker_container:
@@ -22,6 +22,8 @@
     state: started
     restart_policy: always
     networks:
-      - syte2_net
+      - name: syte2_net
     ports:
        - "3000:3000"
+    volumes:
+       - /home/ubuntu/syte2_env:/server/.env

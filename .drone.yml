@@ -12,4 +12,3 @@ pipeline:
                         - make all
                 volumes: 
                         - /home/ubuntu/.ssh:/root/.ssh
-
