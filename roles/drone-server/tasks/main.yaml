@@ -6,7 +6,7 @@
     image: drone/drone:0.7
     state: started
     network_mode: host
-    restart_policy: False 
+    restart_policy: always 
     volumes:
      - "/var/lib/drone:/var/lib/drone/"
     env:

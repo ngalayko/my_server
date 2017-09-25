@@ -8,6 +8,4 @@
     - docker-registry
     - letsencrypt
     - nginx
-    - drone-server
-    - drone-agent
   serial: 1

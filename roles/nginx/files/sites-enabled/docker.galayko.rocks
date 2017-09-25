@@ -9,7 +9,7 @@ server {
 	listen 443 ssl; 
 	server_name docker.galayko.rocks;
 
-	client_max_body_size 50M;
+	client_max_body_size 100M;
 
 	include snippets/ssl-docker.galayko.rocks.conf;
 	include snippets/ssl-params.conf;

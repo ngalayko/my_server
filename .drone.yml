@@ -1,6 +1,15 @@
 pipeline:
+        deploy-agent:
+                image: docker:stable
+                commands:
+                        - docker build ./containers/agent -t docker.galayko.rocks/drone-agent
+                        - docker push docker.galayko.rocks/drone-agent
+                volumes:
+                        - /var/run/docker.sock:/var/run/docker.sock
         deploy:
-                image: ansible/ansible:latest
+                image: docker.galayko.rocks/drone-agent 
                 commands:
                         - ansible-playbook -i inventory/default server.yaml 
-     
+                volumes: 
+                        - /home/ubuntu/.ssh:/root/.ssh
+
