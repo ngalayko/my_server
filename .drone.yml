@@ -9,7 +9,7 @@ pipeline:
         deploy:
                 image: docker.galayko.rocks/drone-agent 
                 commands:
-                        - ansible-playbook -i inventory/default server.yaml 
+                        - make all
                 volumes: 
                         - /home/ubuntu/.ssh:/root/.ssh
 

@@ -1,0 +1,8 @@
+---
+
+- hosts: default
+  become: yes
+  remote_user: ubuntu
+  roles:
+        - url_shortner
+  serial: 1

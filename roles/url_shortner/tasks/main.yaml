@@ -1,0 +1,32 @@
+---
+
+- name: create network
+  docker_network:
+    name: url_shortner_net
+    
+- name: postgresql 
+  docker_container:
+    name: postgres
+    image: postgres
+    restart_policy: always
+    env:
+      POSTGRES_DB: "url_short"
+      POSTGRES_USER: "url_short"
+      POSTGRES_PASSWORD: "secret"
+      POSTGRES_DATA: "/data/postgres"
+    volumes:
+      - "/data/postgres:/data/postgres"
+    networks:
+      - name: url_shortner_net 
+
+- name: server
+  docker_container:
+    name: url_shortner
+    image: docker.galayko.rocks/url_shortner
+    state: started
+    restart_policy: always
+    ports:
+      - "8080:8080"
+    networks:
+      - name: url_shortner_net
+
