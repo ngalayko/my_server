@@ -9,6 +9,6 @@ pipeline:
         deploy:
                 image: docker.galayko.rocks/drone-agent 
                 commands:
-                        - make all
+                        - make services 
                 volumes: 
                         - /home/ubuntu/.ssh:/root/.ssh
