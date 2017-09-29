@@ -17,6 +17,10 @@ server {
 	include snippets/acme;
 	include snippets/gzip;
 
+	location /favicon.ico {
+		return 404;
+	}	
+
 	location / {
         	proxy_pass http://shortner;
 
