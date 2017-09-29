@@ -27,6 +27,8 @@
     restart_policy: always
     ports:
       - "8080:8080"
+    volumes:
+      - "/home/ubuntu/config.yaml:/app/config.yaml"
     networks:
       - name: url_shortner_net
 
