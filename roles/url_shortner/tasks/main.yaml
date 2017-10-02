@@ -30,6 +30,7 @@
     volumes:
       - "/home/ubuntu/config.yaml:/app/config.yaml"
       - "/etc/ssl:/etc/ssl"
+      - "/data/shortner:/data/shortner"
     networks:
       - name: url_shortner_net
 

@@ -18,8 +18,12 @@ server {
 	include snippets/gzip;
 
 	location /favicon.ico {
-		return 404;
+		rewrite ^$ /static/favicon.ico;
 	}	
+
+	location /static/ {
+                root /data/shortner;
+        }
 
 	location / {
         	proxy_pass http://shortner;
